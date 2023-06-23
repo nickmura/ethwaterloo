@@ -1,0 +1,12 @@
+{
+	"/": [
+		"src/routes/+layout.js",
+		"src/routes/+layout.js"
+	],
+	"/ether-state": [
+		"src/routes/+layout.js"
+	],
+	"/networks": [
+		"src/routes/+layout.js"
+	]
+}
