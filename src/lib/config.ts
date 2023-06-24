@@ -79,5 +79,25 @@ export let projects:Project[] = [
     location: 'Canada',
     timeLeft: '30d',
     creationDate: '2023-06-12' 
+   },
+   { 
+    name: 'Help Me Landscape My Backyard',
+    images: ["https://preview.redd.it/zpq6kcl66wn61.jpg?width=3648&format=pjpg&auto=webp&v=enabled&s=fbb0143076ef39b275cabef3f6ec7662a28cd3c7",
+    "https://preview.redd.it/a7bkx4k56wn61.jpg?width=5312&format=pjpg&auto=webp&v=enabled&s=d6120ba088047d7be5ce23dfec341b900d3afa35",
+    "https://preview.redd.it/7s21gtr66wn61.jpg?width=4608&format=pjpg&auto=webp&v=enabled&s=b82f31b4fab41cdb2593bfaefa5ca43d09eef5a5",
+    "https://preview.redd.it/2g8kuru56wn61.jpg?width=5312&format=pjpg&auto=webp&v=enabled&s=18c4172e26d0e369e60a053106f21d7b8303b76b" ],  
+    category: 'Creators',
+    tags: [],
+    owners: [],
+    profession: 'Music producer',
+    goal: 1000,
+    minimum: 0.1,
+    totalValue: '18',
+    supporters: '31',
+    donations: 1,
+    country: '🇨🇦',
+    location: 'Canada',
+    timeLeft: '30d',
+    creationDate: '2023-06-12' 
    } 
 ]

@@ -2,7 +2,7 @@
 
 import { projects, type Project } from '$lib/config'
 
-let project:Project = projects[1];
+let project:Project = projects[2];
 </script>
 
 
@@ -28,7 +28,7 @@ let project:Project = projects[1];
           <div class="flex items-center gap-x-4 sm:gap-x-6 basis-1/5">
             <button type="button" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">Share</button>
             <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">favourite </a>
-            <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">like</a>
+            <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-6080">like</a>
   
             <div class="relative sm:hidden">
               <button type="button" class="-m-3 block p-3" id="more-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -58,7 +58,7 @@ let project:Project = projects[1];
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
             <div class="flex justify-center p-10">
               
-              <img src="{project.images}">
+              <img src="{project.images[0]}">
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
@@ -92,17 +92,29 @@ let project:Project = projects[1];
           <h2 class="text-base font-semibold leading-6 text-gray-900"></h2>
           <div class="mt-1">
           <!-- main media -->
-          <p>The standard Lorem Ipsum passage, used since the 1500s
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            <br>
-            <br>
-            Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-            <br>
-            <br>
-            1914 translation by H. Rackham
-            "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"</p>
 
+          <p class="text-m font-bold">The Problem</p>
+          <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
+          <img class="p-10" src="{project.images[1]}">
+            
+
+          <p class="text-m font-bold pt-10"> The Goal</p>  
+
+          I want to upgrade my planter aswell as make a path for walking. I also want to create and area where we can hangout and have a potential fire.  
+          
+
+          <div> </div>
+
+          
+          <p class="text-m font-bold pt-10">The Implementation</p>    
+          I was able to use the funds to upgrade the planters and add a patio.
+
+          
+          <img class="p-10" src="{project.images[2]}">
+
+           
+
+            
           </div>
         </div>
   
@@ -117,7 +129,7 @@ let project:Project = projects[1];
               <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                 <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> created the invoice.</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Anonymous</span> Donated $125</p>
               <time datetime="2023-01-23T10:32" class="flex-none py-0.5 text-xs leading-5 text-gray-500">7d ago</time>
             </li>
             <li class="relative flex gap-x-4">
@@ -127,7 +139,7 @@ let project:Project = projects[1];
               <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                 <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> Donated</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Michel Freed</span> Donated $30</p>
               <time datetime="2023-01-23T11:03" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
             </li>
             <li class="relative flex gap-x-4">
@@ -137,7 +149,7 @@ let project:Project = projects[1];
               <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                 <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> sent the invoice.</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> Donated $400</p>
               <time datetime="2023-01-23T11:24" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
             </li>
             <li class="relative flex gap-x-4">
@@ -150,7 +162,7 @@ let project:Project = projects[1];
                   <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> commented</div>
                   <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
                 </div>
-                <p class="text-sm leading-6 text-gray-500">Called client, they reassured me the invoice would be paid by the 25th.</p>
+                <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
               </div>
             </li>
             <li class="relative flex gap-x-4">
@@ -160,7 +172,7 @@ let project:Project = projects[1];
               <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                 <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Alex Curren</span> viewed the invoice.</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Alex Curren</span> Donated $100</p>
               <time datetime="2023-01-24T09:12" class="flex-none py-0.5 text-xs leading-5 text-gray-500">2d ago</time>
             </li>
             <li class="relative flex gap-x-4">
@@ -172,7 +184,7 @@ let project:Project = projects[1];
                   <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Alex Curren</span> paid the invoice.</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{project.name}</span> Was succesfully funded.</p>
               <time datetime="2023-01-24T09:20" class="flex-none py-0.5 text-xs leading-5 text-gray-500">1d ago</time>
             </li>
           </ul>
