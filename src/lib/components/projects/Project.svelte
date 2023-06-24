@@ -36,7 +36,7 @@
 
 
             <div class="flex flex-row">
-                <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.subscribers.length} subscribers this month</span>
+                <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.subscribers.length != undefined ? project.subscribers.length : '0'} subscribers this month</span>
             </div>
 
             <div class='pt-5'>
