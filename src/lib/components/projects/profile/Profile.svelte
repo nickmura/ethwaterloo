@@ -2,11 +2,7 @@
 
 import { projects, type Project } from '$lib/config'
 
-let project:Project = projects[0]
-
-  
-
-
+let project:Project = projects[1];
 </script>
 
 
@@ -17,7 +13,7 @@ let project:Project = projects[0]
     <header class="relative isolate pt-1">
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div class="absolute left-16 top-full -mt-16 transform-gpu opacity-50 blur-3xl xl:left-1/2 xl:-ml-80">
-          <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#FF80B5] to-[#9089FC]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
+          <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#7d7d7d] to-[#f4d754]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
         </div>
         <div class="absolute inset-x-0 bottom-0 h-px bg-gray-900/5"></div>
       </div>
@@ -32,7 +28,7 @@ let project:Project = projects[0]
           <div class="flex items-center gap-x-4 sm:gap-x-6 basis-1/5">
             <button type="button" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">Share</button>
             <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">favourite </a>
-            <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</a>
+            <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">like</a>
   
             <div class="relative sm:hidden">
               <button type="button" class="-m-3 block p-3" id="more-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -60,7 +56,8 @@ let project:Project = projects[0]
         <div class="lg:col-start-3 lg:row-end-1">
           <h2 class="sr-only">Summary</h2>
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
-            <div>
+            <div class="flex justify-center p-10">
+              
               <img src="{project.images}">
             </div>
             <div class="h-full w-full pt-15 pl-5">

@@ -44,7 +44,7 @@ export interface Project {
 }
 
 //Refer to type Project comments for each parameter.
-export const projects:Project[] = [
+export let projects:Project[] = [
 
   {
    name: 'ETHWaterloo Poker Tournament',
@@ -63,19 +63,21 @@ export const projects:Project[] = [
    timeLeft: '10d',
    creationDate: '2023-06-12'
   },
- 
-  // { 
-  //  name: 'Dreamin Young',
-  //  images: ["https:cdn5.beatstars.com/eyJidWNrZXQiOiJidHMtY29udGVudCIsImtleSI6InVzZXJzL3Byb2QvMjExOTgxOC9pbWFnZS8xNjYxNzkzNjY0LzNDQTYyQ0JGLTIxMkUtNDY3Ny1BRjZCLTNCMzU4RTI3MEZBQi5wbmciLCJ0aW1lc3RhbXAiOm51bGwsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJmaWxsIiwid2lkdGgiOjE2MCwiaGVpZ2h0IjoxNjB9fX0=?t=1661793664255" ],  
-  //  category: 'Creators',
-  //  tags: [],
-  //  profession: 'Music producer',
-  //  goal: 0,
-  //  totalValue: '18',
-  //  donations: 1,
-  //  country: '🇨🇦',
-  //  location: 'Canada',
-  //  timeLeft: '30d',
-  //  creationDate: '2023-06-12' 
-  // } 
+  { 
+    name: 'Dreamin Young',
+    images: ["https:cdn5.beatstars.com/eyJidWNrZXQiOiJidHMtY29udGVudCIsImtleSI6InVzZXJzL3Byb2QvMjExOTgxOC9pbWFnZS8xNjYxNzkzNjY0LzNDQTYyQ0JGLTIxMkUtNDY3Ny1BRjZCLTNCMzU4RTI3MEZBQi5wbmciLCJ0aW1lc3RhbXAiOm51bGwsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJmaWxsIiwid2lkdGgiOjE2MCwiaGVpZ2h0IjoxNjB9fX0=?t=1661793664255" ],  
+    category: 'Creators',
+    tags: [],
+    owners: [],
+    profession: 'Music producer',
+    goal: 0,
+    minimum: 0.1,
+    totalValue: '18',
+    supporters: '31',
+    donations: 1,
+    country: '🇨🇦',
+    location: 'Canada',
+    timeLeft: '30d',
+    creationDate: '2023-06-12' 
+   } 
 ]
