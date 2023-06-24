@@ -2,7 +2,24 @@
     import { onMount } from "svelte";
     import { walletAddress } from "$lib/stores/provider";
 
-    
+
+    interface Value {
+      symbol: string
+      amount: number
+    }
+    interface Subscriber {
+      address: string
+      chainid: string
+      contribution: Value[]
+    }
+    interface Project {
+      name: string,
+      timeStarted: number // block time stamps, or a ContractBlockStamps[] for multiple chains
+      signers: string[]
+      totalValue: number
+      subscribers: Subscriber[]
+
+    }
 </script>
 
 
