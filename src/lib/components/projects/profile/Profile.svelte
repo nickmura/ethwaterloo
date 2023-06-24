@@ -1,53 +1,16 @@
 <script lang="ts">
 
-     interface Project {
-      name: string,
-      images: string[],
-      category: string,
-      goal: number,
-      progress: string | number,
-      donations: string | number,
-      country: string,
-      location: string,
-      timeLeft: string,
-      creationDate: string,
-      supporters : number
-    }
-  
-   let project:Project = 
-    { 
-      name: 'knxwledge',
-      images: ["https://f4.bcbits.com/img/0020991183_10.jpg" , "https://f4.bcbits.com/img/0020991183_10.jpg" ], 
-      category: 'Music producer',
-      goal: 0,
-      progress: '237',
-      donations: 3,
-      country: '🇺🇸',
-      location: 'Philedelphia',
-      timeLeft: '10d',
-      creationDate: '2023-06-12',
-      supporters: 10
-     }
+import { projects, type Project } from '$lib/config'
+
+let project:Project = projects[0]
+
   
 
 
 </script>
 
 
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+
 
   
   <main>
