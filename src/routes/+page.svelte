@@ -9,6 +9,9 @@
 	} from '$lib/stores/provider';
 	import { balanceOnBlock } from '$lib/stores/state';
 	import { formatEther } from 'ethers/lib/utils';
+
+
+	
 </script>
 
 <main class="flex flex-col p-10 w-screen h-screen items-center gap-5 font-serif">
