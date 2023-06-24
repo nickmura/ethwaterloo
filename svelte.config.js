@@ -8,6 +8,24 @@ const config = {
   preprocess: preprocess({ postcss: true }),
 
   kit: {
+    typescript: {
+      config: (tsconfig) => {
+        const {
+           //destructure properties we don't want
+          importsNotUsedAsValues: _,
+          preserveValueImports: __,
+           //keep the rest in a single object
+          ...compilerOptions
+        } = tsconfig.compilerOptions
+
+        return {
+          ...tsconfig,
+          compilerOptions: {
+            ...compilerOptions,
+          },
+        }
+      },
+    },
     //trailingSlash: 'always',
     adapter: adapter({
       // default options are shown. On some platforms
@@ -16,7 +34,8 @@ const config = {
       assets: 'build',
       fallback: 'index.html',
       precompress: false
-    })
+    }),
+    
   }
 };
 
