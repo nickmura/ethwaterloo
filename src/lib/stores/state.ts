@@ -7,4 +7,4 @@ import '$lib/globalState';
 
 export const balanceOnBlock = writable<BigNumber>(BigNumber.from(0)); 
 
-
+export const categoryCreatorExplore = writable<string>('')
