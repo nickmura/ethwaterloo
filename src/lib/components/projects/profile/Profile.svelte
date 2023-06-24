@@ -11,11 +11,12 @@
       location: string,
       timeLeft: string,
       creationDate: string,
+      supporters : number
     }
   
    let project:Project = 
     { 
-      name: 'knxwledge.',
+      name: 'knxwledge',
       images: ["https://f4.bcbits.com/img/0020991183_10.jpg" , "https://f4.bcbits.com/img/0020991183_10.jpg" ], 
       category: 'Music producer',
       goal: 0,
@@ -24,7 +25,8 @@
       country: '🇺🇸',
       location: 'Philedelphia',
       timeLeft: '10d',
-      creationDate: '2023-06-12' 
+      creationDate: '2023-06-12',
+      supporters: 10
      }
   
 
@@ -49,7 +51,7 @@
 
   
   <main>
-    <header class="relative isolate pt-16">
+    <header class="relative isolate pt-1">
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div class="absolute left-16 top-full -mt-16 transform-gpu opacity-50 blur-3xl xl:left-1/2 xl:-ml-80">
           <div class="aspect-[1154/678] w-[72.125rem] bg-gradient-to-br from-[#FF80B5] to-[#9089FC]" style="clip-path: polygon(100% 38.5%, 82.6% 100%, 60.2% 37.7%, 52.4% 32.1%, 47.5% 41.8%, 45.2% 65.6%, 27.5% 23.4%, 0.1% 35.3%, 17.9% 0%, 27.7% 23.4%, 76.2% 2.5%, 74.2% 56%, 100% 38.5%)"></div>
@@ -59,14 +61,12 @@
   
       <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
-          <div class="flex items-center gap-x-6">
-            <img src="https://tailwindui.com/img/logos/48x48/tuple.svg" alt="" class="h-16 w-16 flex-none rounded-full ring-1 ring-gray-900/10">
-            <h1>
-             
-              <div class="mt-1 text-base font-semibold leading-6 text-gray-900">{project.name}</div>
-            </h1>
+          <div class="flex items-center justify-center basis-2/3 gap-x-6">
+            
+              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 text-xl"> {project.name}</div>
+            
           </div>
-          <div class="flex items-center gap-x-4 sm:gap-x-6">
+          <div class="flex items-center gap-x-4 sm:gap-x-6 basis-1/5">
             <button type="button" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">Share</button>
             <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">favourite </a>
             <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</a>
@@ -100,16 +100,30 @@
             <div>
               <img src="{project.images}">
             </div>
-            <div class="h-full w-full">
-              
-              
+            <div class="h-full w-full pt-15 pl-5">
+
+              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-3">{project.name}</div>
 
 
+              <span aria-hidden="true" class="text-sm text-gray-600">{project.category}</span>
+
+              <div id='location' class=''>
+                <span class="text-sm text-gray-500 mt-3">
+                  <span class=''> 
+                    {project.country}
+                  </span>{project.location}
+                </span>
+              </div>
+
+              <div class="flex flex-row">
+                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.supporters} supporters this month</span>
+              </div>
             </div>
 
-            <div class="mt-6 border-t border-gray-900/5 px-6 py-6">
-              <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Download receipt <span aria-hidden="true">&rarr;</span></a>
+            <div class="mt-3 border-t border-gray-900/5 px-6 py-3 flex justify-center">
+              <button class='px-2 py-2 bg-[#ee4266] border-[#ee4266] text-white border rounded-xl shadow-sm hover:scale-[1.06] transition'>Support</button>
             </div>
+
           </div>
         </div>
   
@@ -153,7 +167,7 @@
               <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                 <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
               </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> edited the invoice.</p>
+              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> Donated</p>
               <time datetime="2023-01-23T11:03" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
             </li>
             <li class="relative flex gap-x-4">
