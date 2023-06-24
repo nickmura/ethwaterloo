@@ -14,6 +14,7 @@
     onMount(() => {
         console.log($walletAddress)
     })
+    
 </script>g
 
 {#if !$connected}
