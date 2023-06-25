@@ -11,10 +11,10 @@
         <div class="flex flex-1  justify-between sm:items-stretch sm:justify-center">
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <a href='/' class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition" aria-current="page">Explore</a>
-              <a href='/creators' class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition">Creators</a>
+              <a href='/explore' class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition" aria-current="page">Explore</a>
+              <a href='/new' class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition">Create</a>
               <a href='/' class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition">Fundraisers</a>
-              <a href='/' class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition">Events</a>
+              <a href='/raffle' class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:scale-[1.06] transition">Raffle</a>
             </div>
           </div>
         </div>

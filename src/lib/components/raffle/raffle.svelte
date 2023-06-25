@@ -1,9 +1,10 @@
 
-<script>
+<script lang="ts">
     import { onMount, onDestroy } from 'svelte';
   
-    let countdown;
-    let timeLeft = 48; // Number of seconds for the countdown
+    let countdown: any;
+    let timeLeft:number = 100; // Number of seconds for the countdown
+    
   
     onMount(() => {
       countdown = setInterval(() => {
@@ -18,6 +19,19 @@
     onDestroy(() => {
       clearInterval(countdown);
     });
+
+    
+
+    function raffle (){
+      timeLeft = 5;
+
+
+    }
+
+    let winner = '0x71C7656EC7ab88b098defB751B7401B5f6d8976F';
+
+
+
   </script>
  
 
@@ -40,12 +54,20 @@
 
             <div class="flex justify-center py-4">
                 <div class="">
+                    {#if timeLeft > 0}
                     <h1 class="text-2xl">Raffle Prize</h1>
                     <h1 class="text-7xl"> Pot of <span class="font-semibold text-8xl">$5480</span> </h1>
-                    {#if timeLeft > 0}
-                      <h2 class="text-xl pt-8 pl-4">Countdown: {timeLeft}</h2>
+                   
+                      <h2 class="text-xl pt-8 pl-2`">Countdown: 6d 22h 23m</h2>
                     {:else}
-                      <h2>Time's up!</h2>
+                    
+                    <div class="p-3">
+                      <h2 class="">Time's up!</h2>
+                      
+                      <h1 class="text-xl "> The winner is <span class="font-semibold text-xl">{winner}</span> </h1>
+                      <h1 class="text-2xl pt-5">Time until next raffle</h1>
+                      <h2 class="text-xl pt-1 `">Countdown: {timeLeft}</h2></div>
+                      
                     {/if}
                   </div>
             
