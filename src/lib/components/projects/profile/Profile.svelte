@@ -40,7 +40,24 @@
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
-              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-3">{project.name}</div>
+              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-2">{project.name}</div>
+              <div class="flex justify-centre">
+                {#if project.goal > 0}
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                    <div class="bg-[#63C132] h-2.5 rounded-full" style="width: {project.totalValue/project.goal *100}%"></div>
+                  </div>
+                {:else}
+                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                    <div class="bg-[#63C132] h-2.5 rounded-full" style="width: 100%"></div>
+                  </div>
+                {/if}
+              </div>
+               <div class='py-2'>
+                <span class='text-2xl'>
+                  ${project.totalValue} USD raised
+                </span>
+
+              </div>  
               <span aria-hidden="true" class="text-sm text-gray-600">{project.category}</span>
 
               <div id='location' class=''>
@@ -71,12 +88,20 @@
           <div class="mt-1">
           <!-- main media -->
 
-          <p class="text-m font-bold">{project.name}</p>
+          <p class="text-m font-bold pb-5">{project.name}</p>
           <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
           <img class="p-10" src="{project.images[1]}" alt='images'>
+
+          
             
 
           <p class="text-m font-bold pt-10"> The Goal</p>  
+          <div class='py-5 flex justify-center'>
+            <span class='text-2xl'>
+              ${project.goal} USD 
+            </span>
+
+          </div>  
 
           I want to upgrade my planter aswell as make a path for walking. I also want to create and area where we can hangout and have a potential fire.  
           
@@ -128,7 +153,7 @@
                     <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.address.substring(0,4)}..{comment.address.substring(37,42)}</span> commented</div>
                     <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
                   </div>
-                  <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
+                  <p class="text-sm leading-6 text-gray-500">Wow! This is such a transformation. Im so glad! You can now enjoy your backyard.</p>
                 </div>
               
               </li>

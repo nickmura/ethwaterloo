@@ -68,7 +68,7 @@ export const projects = [
     profession: 'Landscaping',
     goal: 1000,
     minimum: 0,
-    totalValue: '18',
+    totalValue: 800,
     subscribers: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}, {address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}],
     donations: 5,
     comments: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', message: 'imma win'}],
