@@ -7,7 +7,7 @@
 </script>
 
 
-<Navbar/>
+
 <main class="flex flex-col p-10 w-screen h-screen items-center gap-5 font-mono">
 	<Profile/>
 </main>

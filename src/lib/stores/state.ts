@@ -11,3 +11,4 @@ export const selectedFundr = writable<Project>()
 
 
 export const categoryCreatorExplore = writable<string>('All')
+export const selectedCurrency = writable<'MATIC' | 'USDC' | 'ETH'>('MATIC')

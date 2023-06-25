@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 
+
 error invalidSigner(address invalid);
 
 contract FundrProjectPrototype {
@@ -39,11 +40,13 @@ contract FundrProjectPrototype {
         signer[_signer] = true;
     }
 
-    function recordPledge(address subscriber,uint256 amount) internal {
+    function recordValuePledge(address subscriber,uint256 amount) internal {
         valuePledge[subscriber] += amount;
         emit Pledge(subscriber,amount);
     }
 
-    
+    receive() external payable { // for msg.value 
+        recordValuePledge(msg.sender, msg.value);
+    }
 
 }
