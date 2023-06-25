@@ -6,7 +6,7 @@
     import { goto } from "$app/navigation";
 
     function gotoPledge() {
-      goto('../')
+      goto('/creators/profile')
     }
 
 </script>
@@ -52,7 +52,7 @@
               </div>
               <div class='pt-2'>
                 <span class='text-2xl'>
-                  {project.totalValue}Ξ raised
+                  ${project.totalValue} USD raised
                 </span>
 
               </div>  
@@ -68,9 +68,9 @@
                 </div>
               <div class='pt-5'>
 
-                <button class='px-2 py-2 bg-[] border-[#EBEBEB] border rounded-xl shadow-sm hover:scale-[1.06] transition hover:shadow-md'>View</button>
-                <button on:click={gotoPledge} type="button" class="ml-3 inline-flex items-center rounded-md bg-[#9649cb] px-3 py-2 text-sm font-semibold text-white shadow-sm
-                hover:bg-[#8836BF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:scale-[1.05] transition">Pledge</button>
+                <button class='px-2 py-2 border-[#EBEBEB] border rounded-xl shadow-sm hover:scale-[1.06] transition hover:shadow-md'>View</button>
+                <button on:click={gotoPledge} type="button" class="ml-3 inline-flex items-center rounded-md bg-[#9649cb] hover:bg-[#3AB800] px-3 py-2 text-sm font-semibold text-white shadow-sm
+                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:scale-[1.05] transition">Pledge</button>
               </div>
 
             </div>

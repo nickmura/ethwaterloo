@@ -44,4 +44,6 @@ contract FundrProjectPrototype {
         emit Pledge(subscriber,amount);
     }
 
+    
+
 }
