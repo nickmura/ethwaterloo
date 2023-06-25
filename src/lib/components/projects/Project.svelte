@@ -1,12 +1,13 @@
 <script lang='ts'>
     import { onMount } from "svelte";
     import { walletAddress } from "$lib/stores/provider";
-    import {  
-      projects
-    } from '$lib/config'
+    import { projects } from '$lib/config'
     import { categoryCreatorExplore } from "$lib/stores/state";
+    import { goto } from "$app/navigation";
 
-
+    function gotoPledge() {
+      goto('../')
+    }
 
 </script>
 
@@ -56,7 +57,7 @@
 
               </div>  
               <div class="flex flex-col">
-                  <span class="text-sm italic  text-gray-400 mt-2">{project.supporters} supporters this month</span>
+                  <span class="text-sm italic  text-gray-400 mt-2">{project.subscribers.length} supporters this month</span>
               
                   {#if Number(project.minimum) > 0}
                   <span class='text-sm italic  text-gray-400 mt'>

@@ -1,8 +1,8 @@
 <script lang="ts">
 
-import { projects, type Project } from '$lib/config'
-
-let project:Project = projects[2];
+  import { projects, type Project } from '$lib/config'
+  let project:Project = projects[1];
+  
 </script>
 
 
@@ -22,13 +22,13 @@ let project:Project = projects[2];
         <div class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
           <div class="flex items-center justify-center basis-2/3 gap-x-6">
             
-              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 text-xl"> {project.name}</div>
+              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 "> {project.name}</div>
             
           </div>
           <div class="flex items-center gap-x-4 sm:gap-x-6 basis-1/5">
             <button type="button" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">Share</button>
-            <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">favourite </a>
-            <a href="#" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-6080">like</a>
+            <a href='/' class="hidden text-sm font-semibold leading-6 text-gray-900 sm:block">favourite </a>
+            <a href='/' class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-6080">like</a>
   
             <div class="relative sm:hidden">
               <button type="button" class="-m-3 block p-3" id="more-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -42,7 +42,7 @@ let project:Project = projects[2];
               <div class="absolute right-0 z-10 mt-0.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="more-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-50", Not Active: "" -->
                 <button type="button" class="block w-full px-3 py-1 text-left text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="more-menu-item-0">Copy URL</button>
-                <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="more-menu-item-1">Edit</a>
+                <a href='/' class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem" tabindex="-1" id="more-menu-item-1">Edit</a>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ let project:Project = projects[2];
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
             <div class="flex justify-center p-10">
               
-              <img src="{project.images[0]}">
+              <img src="{project.images[0]}" alt='no'>
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
@@ -76,7 +76,7 @@ let project:Project = projects[2];
               </div>
 
               <div class="flex flex-row">
-                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.supporters} supporters this month</span>
+                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.subscribers.length} supporters this month</span>
               </div>
             </div>
 
@@ -89,13 +89,13 @@ let project:Project = projects[2];
   
         <!-- main media -->
         <div class="-mx-4 px-4 py-8 shadow-sm ring-1 ring-gray-900/5 sm:mx-0 sm:rounded-lg sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2 xl:px-16 xl:pb-20 xl:pt-16">
-          <h2 class="text-base font-semibold leading-6 text-gray-900"></h2>
+          
           <div class="mt-1">
           <!-- main media -->
 
-          <p class="text-m font-bold">The Problem</p>
+          <p class="text-m font-bold">{project.name}</p>
           <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
-          <img class="p-10" src="{project.images[1]}">
+          <img class="p-10" src="{project.images[1]}" alt='images'>
             
 
           <p class="text-m font-bold pt-10"> The Goal</p>  
@@ -110,7 +110,7 @@ let project:Project = projects[2];
           I was able to use the funds to upgrade the planters and add a patio.
 
           
-          <img class="p-10" src="{project.images[2]}">
+          <img class="p-10" src={project.images[2]} alt=''>
 
            
 
@@ -121,7 +121,7 @@ let project:Project = projects[2];
         <div class="lg:col-start-3">
           <!-- Activity feed -->
           <h2 class="text-sm font-semibold leading-6 text-gray-900">Activity</h2>
-          <ul role="list" class="mt-6 space-y-6">
+          
             <li class="relative flex gap-x-4">
               <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
                 <div class="w-px bg-gray-200"></div>
@@ -187,7 +187,7 @@ let project:Project = projects[2];
               <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{project.name}</span> Was succesfully funded.</p>
               <time datetime="2023-01-24T09:20" class="flex-none py-0.5 text-xs leading-5 text-gray-500">1d ago</time>
             </li>
-          </ul>
+
   
           <!-- New comment form -->
           <div class="mt-6 flex gap-x-3">

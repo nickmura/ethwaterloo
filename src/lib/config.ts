@@ -12,21 +12,23 @@ type ExploreNavbar = 'Events' | 'Creators' | 'Community' | 'Orgs'
 
 export interface Value {
   contract: string | null
-  txid: string
+  txid: string | null
   amount: number
   
 }
 export interface Subscriber {
   address: string,
-  chainid: string,
-  value: Value[] | null
+  chainid: number,
+  value: Value | null
 }
 export interface Project {
   name: string,
-  category: ExploreNavbar
-  timeStarted: number // block time stamps, or a ContractBlockStamps[] for multiple chains
+  category: string
+  images: string[]
   signers: string[]
-  totalValue: number
+  country: string
+  location: string
+  totalValue: number | string 
   subscribers: Subscriber[]
 
 }
@@ -38,12 +40,11 @@ export const projects = [
     country: 'France',
     location: 'Paris',
     images: ['https://pbs.twimg.com/profile_images/1524436306205589510/CssJu0MT_400x400.jpg'],
+    goal: 0,
     category: 'Events',
     signers: [],
     totalValue: 1558,
     subscribers: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}],
-    
-
   },
   { 
     name: 'Help Me Landscape My Backyard',
@@ -53,7 +54,7 @@ export const projects = [
     "https://preview.redd.it/2g8kuru56wn61.jpg?width=5312&format=pjpg&auto=webp&v=enabled&s=18c4172e26d0e369e60a053106f21d7b8303b76b" ],  
     category: 'Creators',
     tags: [],
-    owners: [],
+    signers: [],
     profession: 'Music producer',
     goal: 1000,
     minimum: 0.1,
@@ -63,7 +64,6 @@ export const projects = [
     country: '🇨🇦',
     location: 'Canada',
     timeLeft: '30d',
-    creationDate: '2023-06-12' 
    } 
 ]
 
