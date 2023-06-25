@@ -32,7 +32,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-static": "^1.0.0",
+    "@sveltejs/adapter-static": "^1.0.6",
     "@walletconnect/ethereum-provider": "^1.8.0",
     "ether-state": "0.0.1",
     "ethers": "^5.7.1"

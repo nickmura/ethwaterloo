@@ -1,9 +1,9 @@
 
-<script>
+<script lang="ts">
     import { onMount, onDestroy } from 'svelte';
   
-    let countdown;
-    let timeLeft = 48; // Number of seconds for the countdown
+    let countdown: any;
+    let timeLeft:number = 48; // Number of seconds for the countdown
   
     onMount(() => {
       countdown = setInterval(() => {
