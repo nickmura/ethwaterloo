@@ -1,9 +1,6 @@
 <script>
 	import Metamask from "../auth/Metamask.svelte";
   import Network from "../auth/Network.svelte";
-
-  
-
 </script>
 <nav class="bg-[#0d1821] font-mono">
     <div class="mx-auto max-w-7xl px-2 sm:px-4 md:px-5 justify-between">
@@ -26,7 +23,6 @@
             <Metamask/>
             <Network/>
           </div>
-
         </div>
       </div>
     </div>
