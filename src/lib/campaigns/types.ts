@@ -22,7 +22,7 @@ export type BigIntQuantity = f.Static<typeof BigIntQuantity>;
 export const Campaign = f.Object({
 	title: f.String,
 	description: f.String,
-	photo: f.String,
+	imageUrl: f.Union(f.String, f.Undefined),
 	goal: f.Object({
 		currency: f.Union(f.Literal('USD'), f.Literal('CAD'), f.Literal('ETH')),
 		amount: BigIntQuantity,
