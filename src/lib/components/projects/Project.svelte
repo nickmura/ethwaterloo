@@ -6,7 +6,7 @@
     import { goto } from "$app/navigation";
 
     function gotoPledge() {
-      goto('../')
+      goto('/creators/profile')
     }
 
 </script>
@@ -52,7 +52,7 @@
               </div>
               <div class='pt-2'>
                 <span class='text-2xl'>
-                  {project.totalValue}Ξ raised
+                  ${project.totalValue} USD raised
                 </span>
 
               </div>  
