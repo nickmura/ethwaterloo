@@ -39,6 +39,8 @@
     "ethers": "^5.7.1",
     "flowbite": "^1.6.6",
     "flowbite-svelte": "^0.38.5",
-    "tailwind-merge": "^1.13.2"
+    "funtypes": "^5.0.3",
+    "tailwind-merge": "^1.13.2",
+    "web3.storage": "^4.5.4"
   }
 }
