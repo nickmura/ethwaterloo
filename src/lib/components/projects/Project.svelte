@@ -9,6 +9,9 @@
       goto('/creators/profile')
     }
 
+
+    let popupModal = false;
+
 </script>
 
 

@@ -1,11 +1,16 @@
 <script lang="ts">
-
   import { projects, type Project } from '$lib/config'
+  import { Button, Modal } from 'flowbite-svelte'
+  import { subscribe } from 'svelte/internal';
   let project:Project = projects[1];
 
 
   let supportValue =  0
 
+  let isExpanded = false
+  function openDonate() {
+    isExpanded = !isExpanded
+  }
 </script>
 
 
@@ -31,14 +36,11 @@
           <h2 class="sr-only">Summary</h2>
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
             <div class="flex justify-center p-10">
-              
               <img src="{project.images[0]}" alt='no'>
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
               <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-3">{project.name}</div>
-
-
               <span aria-hidden="true" class="text-sm text-gray-600">{project.category}</span>
 
               <div id='location' class=''>
@@ -55,7 +57,7 @@
             </div>
 
             <div class="mt-3 border-t border-gray-900/5 px-6 py-3 ">
-              <button class='px-2 py-2 bg-[#9649cb] border-[#9649cb] text-white border rounded-xl shadow-sm hover:scale-[1.06] transition'>Support</button>
+              <button on:click={openDonate} class='px-2 py-2 bg-[#9649cb] border-[#9649cb] text-white border rounded-xl shadow-sm hover:scale-[1.06] transition'>Support</button>
             
             </div>
             
@@ -98,42 +100,29 @@
           <!-- Activity feed -->
           <h2 class="text-sm font-semibold leading-6 text-gray-900">Activity</h2>
           
+
+            {#if project.subscribers.length}
+              {#each project.subscribers as subscriber}
+                <li class="relative flex gap-x-4">
+                  <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
+                    <div class="w-px bg-gray-200"></div>
+                  </div>
+                  <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
+                    <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
+                  </div>
+                  <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{subscriber.address.substring(0,4)}..{subscriber.address.substring(37,42)}</span> Donated $400</p>
+                  <time datetime="2023-01-23T11:24" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
+                </li>
+              {/each}
+            {/if}
+
+          {#each project.comments as comment}
             <li class="relative flex gap-x-4">
               <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
                 <div class="w-px bg-gray-200"></div>
               </div>
-              <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
-              </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Anonymous</span> Donated $125</p>
-              <time datetime="2023-01-23T10:32" class="flex-none py-0.5 text-xs leading-5 text-gray-500">7d ago</time>
-            </li>
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
-                <div class="w-px bg-gray-200"></div>
-              </div>
-              <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
-              </div>
-              <!-- <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">0x889...gjk9</span> Donated $30</p> -->
-              <time datetime="2023-01-23T11:03" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
-            </li>
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
-                <div class="w-px bg-gray-200"></div>
-              </div>
-              <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
-              </div>
-              <!-- <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Chelsea Hagon</span> Donated $400</p>
-              <time datetime="2023-01-23T11:24" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time> -->
-            </li>
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
-                <div class="w-px bg-gray-200"></div>
-              </div>
-              <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50">
-              {#each project.comments as comment}
+              <img src="https://raw.githubusercontent.com/afa7789/BlockiesVue/master/download.png" alt="" class="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50">
+              
                 <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                   <div class="flex justify-between gap-x-4">
                     <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.address.substring(0,4)}..{comment.address.substring(37,42)}</span> commented</div>
@@ -141,35 +130,28 @@
                   </div>
                   <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
                 </div>
-              {/each}
-            </li>
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
-                <div class="w-px bg-gray-200"></div>
+              
+              </li>
+            {/each}
+            
+            <Modal bind:open={isExpanded} size="sm" autoclose>
+              <div class="text-center">
+                <!-- <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> -->
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Support a cause</h3>
+                <div class=''>
+                  <div class=''>
+                    <span class=''>Token</span>
+                    
+                  </div>
+                </div>
+                <Button color="alternative" class="mr-2">Yes, I'm sure</Button>
+                <Button color='green'>Contribute</Button>
               </div>
-              <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
-              </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">Alex Curren</span> Donated $100</p>
-              <time datetime="2023-01-24T09:12" class="flex-none py-0.5 text-xs leading-5 text-gray-500">2d ago</time>
-            </li>
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center h-6">
-                <div class="w-px bg-gray-200"></div>
-              </div>
-              <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                <svg class="h-6 w-6 text-indigo-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{project.name}</span> Was succesfully funded.</p>
-              <time datetime="2023-01-24T09:20" class="flex-none py-0.5 text-xs leading-5 text-gray-500">1d ago</time>
-            </li>
-
+            </Modal>
   
           <!-- New comment form -->
           <div class="mt-6 flex gap-x-3">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-6 w-6 flex-none rounded-full bg-gray-50">
+            <img src="https://raw.githubusercontent.com/afa7789/BlockiesVue/master/download.png" alt="" class="h-6 w-6 flex-none rounded-full bg-gray-50">
             <form action="#" class="relative flex-auto">
               <div class="overflow-hidden rounded-lg pb-12 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
                 <label for="comment" class="sr-only">Add your comment</label>
@@ -183,7 +165,7 @@
                       <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
                       </svg>
-                      <span class="sr-only">Attach a file</span>
+                          <span class="sr-only">Attach a file</span>
                     </button>
                   </div>
                   

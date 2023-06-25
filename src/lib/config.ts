@@ -74,7 +74,7 @@ export const projects = [
     comments: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', message: 'imma win'}],
     
     country: '🇨🇦',
-    location: 'Londonx',
+    location: 'London',
     timeLeft: '30d',
    } 
 ]
