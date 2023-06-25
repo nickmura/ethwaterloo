@@ -16,6 +16,11 @@ export interface Value {
   amount: number
   
 }
+
+export interface CommentMessage {
+  address: string,
+  message: string,
+}
 export interface Subscriber {
   address: string,
   chainid: number,
@@ -30,6 +35,7 @@ export interface Project {
   location: string
   totalValue: number | string 
   subscribers: Subscriber[]
+  comments: CommentMessage[]
 
 }
 
@@ -45,8 +51,9 @@ export const projects = [
     category: 'Events',
     minimum: 0.1,
     signers: [],
-    totalValue: 5378,
+    totalValue: 2378,
     subscribers: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}],
+    comments: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', message: 'imma win'}]
   },
   { 
     name: 'Help Me Landscape My Backyard',
@@ -64,8 +71,10 @@ export const projects = [
     totalValue: '18',
     subscribers: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}, {address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', chainid: 0xaa36a7, value: { contract: null, amount: 50000000000, txid: null }}],
     donations: 5,
+    comments: [{address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2', message: 'imma win'}],
+    
     country: '🇨🇦',
-    location: 'London',
+    location: 'Londonx',
     timeLeft: '30d',
    } 
 ]
