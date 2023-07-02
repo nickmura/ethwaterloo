@@ -5,6 +5,12 @@
   import { selectedCurrency } from '$lib/stores/state';
   import { Button, Modal } from 'flowbite-svelte'
   import { subscribe } from 'svelte/internal';
+  import ABI from '$lib/abis/Crowdfunding.json'
+
+
+  
+
+
   let project:Project = projects[1];
 
 
@@ -16,9 +22,24 @@
   }
 
 
-    function submitTransaction() {
-      
-    }
+  async function submitTransaction() {
+      console.log('submit')
+
+      try {
+        const contractAddress = '0x8CcFa6C61Bb17aecEcC850409c30551645fa249a'
+        const provider = new ethers.providers.InfuraProvider("goerli")
+        const signer = provider.getSigner();
+
+        const contract = new ethers.Contract(contractAddress, ABI, signer)
+        const tx = await contract.sendTransaction({
+          to: contractAddress,
+          value: supportValue
+        })
+      } catch (error) {
+        //@ts-ignore
+        console.log(error.message)
+      }
+  }
 </script>
 
 
@@ -142,7 +163,7 @@
               </li>
             {/each}
             
-            <Modal bind:open={isExpanded} size="sm" autoclose>
+            <Modal bind:open={isExpanded} size="sm" outsideclose>
               <div class="text-center">
                 <!-- <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> -->
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Support</h3>

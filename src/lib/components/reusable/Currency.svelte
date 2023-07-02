@@ -19,15 +19,15 @@
 
 
 <div class='min-w-[120px] relative text-black'>
-    <button on:click={expandNetworks} class=' w-full px-2 py-1.5 
+    <button class=' w-full px-2 py-1.5 
     border rounded-lg border-[#DDDBE6] text-black flex flex-wrap gap-2 font-bold justify-between items-center'>
         <div class="flex gap-2 items-center">
-            <img src='/symbols/matic.svg' class='w-5 h-5 mt-0.5' alt='tron-logo'/>
-            <span>{$selectedCurrency}</span>
+            <img src='/symbols/eth.svg' class='w-5 h-5 mt-0.5' alt='tron-logo'/>
+            <span>ETH</span>
         </div>
         <img src='/carrot.svg' class='w-3 h-3' alt='carrot'/>
     </button>
-    {#if isExpanded}
+    <!-- {#if isExpanded}
         <div class='animate-fade-in-up absolute flex w-full flex-column 
         border border-[#dddBe6] rounded-lg flex-wrap bg-[#F5F5F5] dark:bg-[#16161d] mt-2 dark:text-white'>
             <div class='flex w-full gap-2 font-bold rounded-lg'>
@@ -44,7 +44,6 @@
                         </button>
                     </li>
 
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <li on:click={changeMATIC} class="border-b border-[#dddBe6] w-full hover:cursor-not-allowed opacity-50">
                         <span class="flex gap-2 px-2 py-2 cursor-pointer items-center">
                             <img src='/symbols/ada.svg' class='w-5 h-5 mt-0.5' alt=''/>
@@ -54,7 +53,7 @@
                 </ul>
             </div>
         </div>
-    {/if}
+    {/if} -->
 </div>
 
 <style>

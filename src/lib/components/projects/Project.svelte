@@ -29,7 +29,6 @@
               <h3 class="text-md font-bold">{project.name}</h3>
               <span aria-hidden="true" class="text-xs text-gray-600">{project.profession}</span>
 
-
               <div id='location' class=''>
                 <span class="text-sm text-gray-500 mt-3">
                   <span class=''> 
