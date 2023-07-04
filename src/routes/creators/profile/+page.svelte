@@ -1,7 +1,7 @@
 <script lang='ts'>
     
 
-	import Profile from '$lib/components/projects/profile/Profile.svelte';
+	import Profile from '$lib/components/community/fundr/Fundr.svelte';
 	import Navbar from '$lib/components/reusable/Navbar.svelte';
 	
 </script>

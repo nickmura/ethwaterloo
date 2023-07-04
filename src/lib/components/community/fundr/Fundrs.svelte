@@ -90,9 +90,9 @@
 {#if $viewFundrModal && $selectedFundr}
   <div class=''>
     <Modal title={$selectedFundr.title} bind:open={$viewFundrModal}>
-    <div class=''>
-      
-    </div>
-  </Modal>
+      <div class=''>
+        {$selectedFundr.description}
+      </div>
+    </Modal>
   </div>
 {/if}

@@ -1,19 +1,31 @@
-<script>
+<script lang='ts'>
+	import { selectedNetwork } from "$lib/stores/state";
+	import type { Networks } from '$lib/config'
+
+
+
 	let isExpanded = false;
 	function expandNetworks() {
 		isExpanded = !isExpanded;
 	}
+
+	function setSelectedNetwork(network:Networks) {
+		selectedNetwork.set(network)
+		isExpanded = !isExpanded;
+	}
+
+	
 </script>
 
-<div class="min-w-[120px] relative">
+<div class="min-w-[120px] relative z-20">
 	<button
 		on:click={expandNetworks}
 		class=" w-full px-2 py-1.5
     border rounded-lg border-[#DDDBE6] text-white flex flex-wrap gap-2 font-bold justify-between items-center"
 	>
 		<div class="flex gap-2 items-center">
-			<img src="/symbols/eth.svg" class="w-5 h-5 mt-0.5" alt="tron-logo" />
-			<span>Ethereum</span>
+			<img src={$selectedNetwork == 'Ethereum' ? "/symbols/eth.svg" : $selectedNetwork == 'ZetaChain' ?  '/symbols/zeta.png' : '/symbols/ada.svg'} class="w-5 h-5 mt-0.5" alt="tron-logo" />
+			<span>{$selectedNetwork}</span>
 		</div>
 		<img src="/carrot.svg" class="w-3 h-3" alt="carrot" />
 	</button>
@@ -25,7 +37,7 @@
 			<div class="flex w-full gap-2 font-bold rounded-lg">
 				<ul class="w-full">
 					<li class="border-b border-[#dddBe6] w-full">
-						<button on:click={expandNetworks} class="w-full">
+						<button on:click={(e)=>setSelectedNetwork('Ethereum')} class="w-full">
 							<span
 								class="transition flex gap-2 px-2 py-2 cursor-pointer justify-between"
 							>
@@ -35,7 +47,23 @@
 										class="w-5 h-5 items-center"
 										alt="fdsffffsd"
 									/>
-									<span>Ethereum</span>
+									<span>{$selectedNetwork}</span>
+								</div>
+							</span>
+						</button>
+					</li>
+					<li class="border-b border-[#dddBe6] w-full">
+						<button on:click={(e)=>setSelectedNetwork('ZetaChain')} class="w-full">
+							<span
+								class="transition flex gap-2 px-2 py-2 cursor-pointer justify-between"
+							>
+								<div class="flex-wrap flex gap-2 items-center">
+									<img
+										src="/symbols/zeta.png"
+										class="w-5 h-5 items-center"
+										alt="fdsffffsd"
+									/>
+									<span>ZetaChain</span>
 								</div>
 							</span>
 						</button>

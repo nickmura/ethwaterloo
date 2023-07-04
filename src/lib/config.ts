@@ -8,6 +8,7 @@ export type Network = {
 	multicall2Address: string; // (Allows you to call multiple view & pure functions off-chain in a single RPC call
 	blockExplorerUrl?: string;
 };
+export type Networks = 'Ethereum' | 'ZetaChain' | 'Cardano'
 
 export type ExploreNavbar = 'Events' | 'Creators' | 'Community' | 'Orgs';
 
@@ -88,7 +89,7 @@ export const fundrs:FUNDR[] = [
 
 		contract: null,
 		totalValue: 0.6,
-			
+
 
 		subscribers: [
 			{
@@ -104,7 +105,7 @@ export const fundrs:FUNDR[] = [
 			},
 		],
 
-		description: ``,
+		description: `Play poker with us! Attendees can deposit 0.1 of ETH on the network`,
 
 		minimum: 0.1,
 		maximum: 0.1,
