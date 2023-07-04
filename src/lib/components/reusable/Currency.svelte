@@ -56,7 +56,7 @@
     {/if} -->
 </div>
 
-<style>
+<style>d
 
     @keyframes fade-in-up {
     0% {

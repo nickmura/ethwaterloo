@@ -1,17 +1,16 @@
 <script lang="ts">
   import { ethers } from 'ethers'
   import Currency from '$lib/components/reusable/Currency.svelte';
-  import { projects, type Project } from '$lib/config'
-  import { selectedCurrency } from '$lib/stores/state';
+  import { fundrs,  type FUNDR } from '$lib/config'
+  import { currencySymbol, selectedCurrency } from '$lib/stores/state';
   import { Button, Modal } from 'flowbite-svelte'
-  import { subscribe } from 'svelte/internal';
   import ABI from '$lib/abis/Crowdfunding.json'
 
 
   
 
 
-  let project:Project = projects[1];
+  let fundr:FUNDR = fundrs[0];
 
 
   let supportValue =  0
@@ -60,28 +59,28 @@
   
     <div class="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8">
       <div class="mx-auto grid max-w-2xl grid-cols-1 grid-rows-1 items-start gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <!-- Project Summary card  -->
+        <!-- fundr Summary card  -->
         <div class="lg:col-start-3 lg:row-end-1">
           <h2 class="sr-only">Summary</h2>
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
             <div class="flex justify-center p-10">
-              <img src="{project.images[0]}" alt='no'>
+              <img src="{fundr.images[0]}" alt='no'>
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
-              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-3">{project.name}</div>
-              <span aria-hidden="true" class="text-sm text-gray-600">{project.category}</span>
+              <div class="mt-1 text-base font-semibold leading-6 text-gray-900 py-3">{fundr.title}</div>
+              <span aria-hidden="true" class="text-sm text-gray-600">{fundr.category}</span>
 
               <div id='location' class=''>
                 <span class="text-sm text-gray-500 mt-3">
                   <span class=''> 
-                    {project.country}
-                  </span>{project.location}
+                    {fundr.country}
+                  </span>{fundr.location}
                 </span>
               </div>
 
               <div class="flex flex-row">
-                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{project.subscribers.length} supporters this month</span>
+                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{fundr.subscribers.length} supporters this month</span>
               </div>
             </div>
 
@@ -100,9 +99,9 @@
           <div class="mt-1">
           <!-- main media -->
 
-          <p class="text-m font-bold">{project.name}</p>
+          <p class="text-m font-bold">{fundr.title}</p>
           <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
-          <img class="p-10" src="{project.images[1]}" alt='images'>
+          <img class="p-10" src="{fundr.images[1]}" alt='images'>
             
 
           <p class="text-m font-bold pt-10"> The Goal</p>  
@@ -117,7 +116,7 @@
           I was able to use the funds to upgrade the planters and add a patio.
 
           
-          <img class="p-10" src={project.images[2]} alt=''>
+          <img class="p-10" src={fundr.images[2]} alt=''>
 
            
 
@@ -130,8 +129,8 @@
           <h2 class="text-sm font-semibold leading-6 text-gray-900">Activity</h2>
           
 
-            {#if project.subscribers.length}
-              {#each project.subscribers as subscriber}
+            {#if fundr.subscribers.length}
+              {#each fundr.subscribers as subscriber}
                 <li class="relative flex gap-x-4">
                   <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
                     <div class="w-px bg-gray-200"></div>
@@ -139,13 +138,13 @@
                   <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
                     <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
                   </div>
-                  <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{subscriber.address.substring(0,4)}..{subscriber.address.substring(37,42)}</span> Donated $400</p>
+                  <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{subscriber.signer.substring(0,4)}..{subscriber.signer.substring(37,42)}</span> Donated $400</p>
                   <time datetime="2023-01-23T11:24" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
                 </li>
               {/each}
             {/if}
 
-          {#each project.comments as comment}
+          {#each fundr.comments as comment}
             <li class="relative flex gap-x-4">
               <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
                 <div class="w-px bg-gray-200"></div>
@@ -154,7 +153,7 @@
               
                 <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
                   <div class="flex justify-between gap-x-4">
-                    <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.address.substring(0,4)}..{comment.address.substring(37,42)}</span> commented</div>
+                    <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.signer.substring(0,4)}..{comment.signer.substring(37,42)}</span> commented</div>
                     <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
                   </div>
                   <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
@@ -183,8 +182,8 @@
                   </div>
                 {#if supportValue}
                 <div class='mt-6'>
-                  <span class=''>Supporting: {project.name}</span>
-                  <span class=''>Amount: {supportValue} {$selectedCurrency}</span>
+                  <span class=''>Supporting: {fundr.title}</span>
+                  <span class=''>Amount: {$currencySymbol}{supportValue} {$selectedCurrency}</span>
 
                 </div>
       

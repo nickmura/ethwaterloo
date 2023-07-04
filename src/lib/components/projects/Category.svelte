@@ -19,7 +19,7 @@
 			<a
 				href="/new"
 				class="ml-3 inline-flex items-center rounded-md bg-[#9649cb] px-3 py-2 text-sm font-semibold text-white shadow-sm
-        hover:bg-[#8836BF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:scale-[1.05] transition"
+        		hover:bg-[#8836BF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:scale-[1.05] transition"
 				>Create</a
 			>
 		</div>

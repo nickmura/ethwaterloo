@@ -1,3 +1,5 @@
+
+
 export type Network = {
 	chainId: number;
 	rpcUrl: string;
@@ -7,35 +9,107 @@ export type Network = {
 	blockExplorerUrl?: string;
 };
 
-type ExploreNavbar = 'Events' | 'Creators' | 'Community' | 'Orgs';
+export type ExploreNavbar = 'Events' | 'Creators' | 'Community' | 'Orgs';
+
+export type CurrencySymbol = 'Ξ' | '$' | '€';
 
 export interface Value {
-	contract: string | null;
+	contract: Contract | null;
 	txid: string | null;
 	amount: number;
 }
-
+export interface Contract {
+	address: string
+	chain: string
+}
 export interface CommentMessage {
-	address: string;
+	signer: string;
 	message: string;
 }
 export interface Subscriber {
-	address: string;
+	signer: string;
 	chainid: number;
 	value: Value | null;
 }
 export interface Project {
-	name: string;
-	category: string;
-	images: string[];
-	signers: string[];
-	country: string;
-	location: string;
-	totalValue: number | string;
-	subscribers: Subscriber[];
-	comments: CommentMessage[];
+	name: string
+	category: string
+	images: string[]
+	signers: string[]
+	country: string
+	location: string
+	goal: number
+	totalValue: number | string
+	subscribers: Subscriber[]
+	comments: CommentMessage[]
 }
 
+export interface FUNDR {
+	title: string
+
+	category: string
+	profession: string
+
+	country: string
+	location: string
+	
+	images: string[]
+
+	goal: number
+
+	contract: Contract[] | null
+	totalValue: number | string
+	
+
+	subscribers: Subscriber[]
+	comments: CommentMessage[]
+	description: string
+
+	minimum: number
+	maximum: number
+}
+
+
+export const fundrs:FUNDR[] = [
+	{
+		title: 'ETHParis Poker Tournament',
+
+		country: '🇫🇷',
+		location: 'Paris',
+
+		category: 'Events',
+		profession: 'Cryptocurrency event',
+
+		images: [
+			'https://pbs.twimg.com/profile_images/1524436306205589510/CssJu0MT_400x400.jpg',
+		],
+
+		goal: 0,
+
+		contract: null,
+		totalValue: 0.6,
+			
+
+		subscribers: [
+			{
+				signer: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
+				chainid: 0xaa36a7,
+				value: { contract: null, amount: 50000000000, txid: null },
+			},
+		],
+		comments: [
+			{
+				signer: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
+				message: 'imma win',
+			},
+		],
+
+		description: ``,
+
+		minimum: 0.1,
+		maximum: 0.1,
+	}
+]
 export const projects = [
 	{
 		name: 'ETHParis Poker Tournament',
@@ -83,12 +157,12 @@ export const projects = [
 			{
 				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
 				chainid: 0xaa36a7,
-				value: { contract: null, amount: 50000000000, txid: null },
+				value: { contract: null, amount: 0.1, txid: null },
 			},
 			{
 				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
 				chainid: 0xaa36a7,
-				value: { contract: null, amount: 50000000000, txid: null },
+				value: { contract: null, amount: 0.1, txid: null },
 			},
 		],
 		donations: 5,
