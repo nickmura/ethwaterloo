@@ -1,8 +1,18 @@
 <script lang='ts'>
+	import { onMount } from "svelte";
+	import { accountChainId, accountProvider, networkProviders, selectedNetworkIndex } from "$lib/stores/provider";
 	import { selectedNetwork } from "$lib/stores/state";
 	import type { Networks } from '$lib/config'
 
+	onMount(() => {
+		console.log($accountChainId)
+		console.log(selectedNetworkIndex)
+		// console.log(accountsChangedListener)
+		console.log(accountProvider)
+		console.log(networkProviders)
+		
 
+	});
 
 	let isExpanded = false;
 	function expandNetworks() {
@@ -14,9 +24,10 @@
 		isExpanded = !isExpanded;
 	}
 
-	
+
 </script>
 
+<!-- svelte-ignore missing-declaration -->
 <div class="min-w-[120px] relative z-20">
 	<button
 		on:click={expandNetworks}
@@ -47,7 +58,7 @@
 										class="w-5 h-5 items-center"
 										alt="fdsffffsd"
 									/>
-									<span>{$selectedNetwork}</span>
+									<span>Ethereum</span>
 								</div>
 							</span>
 						</button>
@@ -68,17 +79,22 @@
 							</span>
 						</button>
 					</li>
-
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<!-- <li -->
-					<!-- 	on:click={expandNetworks} -->
-					<!-- 	class="border-b border-[#dddBe6] w-full hover:cursor-not-allowed opacity-50" -->
-					<!-- > -->
-					<!-- 	<span class="flex gap-2 px-2 py-2 cursor-pointer items-center"> -->
-					<!-- 		<img src="/symbols/polygon.svg" class="w-5 h-5 mt-0.5" alt="" /> -->
-					<!-- 		<span>Polygon</span> -->
-					<!-- 	</span> -->
-					<!-- </li> -->
+					<li class="border-b border-[#dddBe6] w-full">
+						<button on:click={(e)=>setSelectedNetwork('Cardano')} class="w-full">
+							<span
+								class="transition flex gap-2 px-2 py-2 cursor-pointer justify-between"
+							>
+								<div class="flex-wrap flex gap-2 items-center">
+									<img
+										src="/symbols/ada.svg"
+										class="w-5 h-5 items-center"
+										alt="cardano"
+									/>
+									<span>Cardano</span>
+								</div>
+							</span>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>

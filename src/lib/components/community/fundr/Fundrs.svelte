@@ -6,17 +6,18 @@
     import { goto } from "$app/navigation";
     import { Modal } from "flowbite-svelte";
     import { verifyMessage } from "ethers/lib/utils";
+    import View from "./modal/View.svelte";
 
-    function gotoPledge() {
-      goto('/creators/profile')
-    }
+  function gotoPledge() {
+    goto('/creators/profile')
+  }
 
-    function viewMore(fundr:FUNDR) {
-      selectedFundr.set(fundr)
-      viewFundrModal.set(!$viewFundrModal)
-    }
+  function viewMore(fundr:FUNDR) {
+    selectedFundr.set(fundr)
+    viewFundrModal.set(!$viewFundrModal)
+  }
 
-
+  
 </script>
 
 
@@ -88,11 +89,5 @@
   </div>
 </div>
 {#if $viewFundrModal && $selectedFundr}
-  <div class=''>
-    <Modal title={$selectedFundr.title} bind:open={$viewFundrModal}>
-      <div class=''>
-        {$selectedFundr.description}
-      </div>
-    </Modal>
-  </div>
+  <View/>
 {/if}

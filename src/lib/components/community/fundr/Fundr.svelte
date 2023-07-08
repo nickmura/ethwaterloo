@@ -108,10 +108,6 @@
 
           I want to upgrade my planter aswell as make a path for walking. I also want to create and area where we can hangout and have a potential fire.  
           
-
-          <div> </div>
-
-          
           <p class="text-m font-bold pt-10">The Implementation</p>    
           I was able to use the funds to upgrade the planters and add a patio.
 

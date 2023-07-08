@@ -1,15 +1,15 @@
 export const ssr = false;
 import { BigNumber } from "ethers";
 import { writable } from "svelte/store";
-import type { FUNDR, CurrencySymbol, Networks } from "../config";
+import { type FUNDR, type CurrencySymbol, type Networks, fundrs } from "../config";
 
 
 import '$lib/globalState';
 
-
-export const API='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGFjZDU4ODcwZjNhNjU3RTNjMjYxMjg3ZkREM2Q5MjU1YTE3N0RDNkUiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2ODc2ODY5MzE0OTEsIm5hbWUiOiJmdW5kciJ9.YCkeXphKAQ2sHYnYVrGilrG9N8mHinRjLFSgcrynDY8'
+export const API_KEY = process.env.API_KEY
 export const balanceOnBlock = writable<BigNumber>(BigNumber.from(0)); 
-export const selectedFundr = writable<FUNDR>()
+export const selectedFundr = writable<FUNDR>();
+export const fetchedFundr = writable<FUNDR>(fundrs[0]);
 
 
 export const categoryFundrExplore = writable<string>('All')

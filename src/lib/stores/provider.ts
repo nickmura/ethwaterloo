@@ -55,7 +55,7 @@ export const connectMetamask = () => new Promise((resolve, reject) => {
             else {
               walletAddress.set(constants.AddressZero);
               accountProvider.set(undefined);
-            }
+            };
           }
           get(accountProvider).on('accountsChanged', accountsChangedListener);
           chainChangedListener = (chainIdHex: string) => {
