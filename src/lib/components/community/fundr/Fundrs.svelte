@@ -29,7 +29,7 @@
         {#if fundr.category == $categoryFundrExplore || $categoryFundrExplore == 'All'}
           <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white hover:scale-[1.02] transition ">
             <div class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-95 sm:h-96">
-              <img src="{fundr.images[0]}" alt="artist" class="h-full w-full object-cover object-center sm:h-full sm:w-full scale-[0.5]">
+              <img src="{fundr?.images?.[0]}" alt="artist" class="h-full w-full object-cover object-center sm:h-full sm:w-full scale-[0.5]">
             </div>
             <div class="flex flex-1 flex-col space-y-1 p-4">
               <h3 class="text-md font-bold">{fundr.title}</h3>
@@ -48,7 +48,7 @@
 
               
               <div class=''>
-                {#if fundr.goal > 0}
+                {#if Number(fundr.goal) > 0}
                   <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                     <div class="bg-[#63C132] h-2.5 rounded-full" style="width: 45%"></div>
                   </div>
@@ -65,14 +65,13 @@
 
               </div>  
               <div class="flex flex-col">
-                  <span class="text-sm italic  text-gray-400 mt-2">{fundr.subscribers.length} supporters this month</span>
+                  <span class="text-sm italic  text-gray-400 mt-2">{fundr?.subscribers?.length} supporters this month</span>
               
                   {#if Number(fundr.minimum) > 0}
-                  <span class='text-sm italic  text-gray-400 mt'>
-                    {fundr.minimum} ETH minimum pledge to participate
-                  </span>
-
-                {/if}
+                    <span class='text-sm italic  text-gray-400 mt'>
+                      {fundr.minimum} ETH minimum pledge to participate
+                    </span>
+                  {/if}
                 </div>
               <div class='pt-5'>
 

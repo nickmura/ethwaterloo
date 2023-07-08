@@ -26,7 +26,7 @@
 
       try {
         const contractAddress = '0x8CcFa6C61Bb17aecEcC850409c30551645fa249a'
-        const provider = new ethers.providers.InfuraProvider("goerli")
+        const provider = new ethers.providers.JsonRpcProvider()
         const signer = provider.getSigner();
 
         const contract = new ethers.Contract(contractAddress, ABI, signer)
@@ -46,7 +46,7 @@
 
   
   <main>
-    <header class="relative isolate pt-1">
+    <!-- <header class="relative isolate pt-1">
       
   
       <div class="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8">
@@ -55,7 +55,7 @@
 
         </div>
       </div>
-    </header>
+    </header> -->
   
     <div class="mx-auto max-w-7xl px-4  sm:px-6 lg:px-8">
       <div class="mx-auto grid max-w-2xl grid-cols-1 grid-rows-1 items-start gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -64,7 +64,7 @@
           <h2 class="sr-only">Summary</h2>
           <div class="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
             <div class="flex justify-center p-10">
-              <img src="{fundr.images[0]}" alt='no'>
+              <img src="{fundr?.images?.[0]}" alt='no'>
             </div>
             <div class="h-full w-full pt-15 pl-5">
 
@@ -80,7 +80,7 @@
               </div>
 
               <div class="flex flex-row">
-                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{fundr.subscribers.length} supporters this month</span>
+                  <span class="text-sm italic  text-gray-600 basis-3/4 mt-2">{fundr?.subscribers?.length ?? 0 } supporters this month</span>
               </div>
             </div>
 
@@ -101,7 +101,7 @@
 
           <p class="text-m font-bold">{fundr.title}</p>
           <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
-          <img class="p-10" src="{fundr.images[1]}" alt='images'>
+          <img class="p-10" src="{fundr?.images?.[1]}" alt='images'>
             
 
           <p class="text-m font-bold pt-10"> The Goal</p>  
@@ -112,7 +112,7 @@
           I was able to use the funds to upgrade the planters and add a patio.
 
           
-          <img class="p-10" src={fundr.images[2]} alt=''>
+          <img class="p-10" src={fundr?.images?.[2]} alt=''>
 
            
 
@@ -125,7 +125,7 @@
           <h2 class="text-sm font-semibold leading-6 text-gray-900">Activity</h2>
           
 
-            {#if fundr.subscribers.length}
+            {#if fundr?.subscribers?.length}
               {#each fundr.subscribers as subscriber}
                 <li class="relative flex gap-x-4">
                   <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
@@ -139,24 +139,25 @@
                 </li>
               {/each}
             {/if}
-
-          {#each fundr.comments as comment}
-            <li class="relative flex gap-x-4">
-              <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
-                <div class="w-px bg-gray-200"></div>
-              </div>
-              <img src="https://raw.githubusercontent.com/afa7789/BlockiesVue/master/download.png" alt="" class="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50">
-              
-                <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
-                  <div class="flex justify-between gap-x-4">
-                    <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.signer.substring(0,4)}..{comment.signer.substring(37,42)}</span> commented</div>
-                    <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
-                  </div>
-                  <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
+          {#if fundr?.comments?.length}      
+            {#each fundr.comments as comment}
+              <li class="relative flex gap-x-4">
+                <div class="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
+                  <div class="w-px bg-gray-200"></div>
                 </div>
-              
-              </li>
-            {/each}
+                <img src="https://raw.githubusercontent.com/afa7789/BlockiesVue/master/download.png" alt="" class="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50">
+                
+                  <div class="flex-auto rounded-md p-3 ring-1 ring-inset ring-gray-200">
+                    <div class="flex justify-between gap-x-4">
+                      <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.signer.substring(0,4)}..{comment.signer.substring(37,42)}</span> commented</div>
+                      <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
+                    </div>
+                    <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
+                  </div>
+                
+                </li>
+              {/each}
+            {/if}
             
             <Modal bind:open={isExpanded} size="sm" outsideclose>
               <div class="text-center">

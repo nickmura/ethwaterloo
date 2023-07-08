@@ -18,8 +18,10 @@ export async function load({ fetch, params }) {
 
     let fundr = fundrs.find(fundr => fundr.url == url)
     if (fundr) fetchedFundr.set(fundr)
-
-  } await queryIPFS(fundrUrl)
+    return fundr
+  } let fundr = await queryIPFS(fundrUrl)
+  if (fundr) return fundr
+  else throw error(404, 'Not found')
 //   if (input.includes('.trx') || input.includes('.usdd')) {
     
 //     console.log(input);

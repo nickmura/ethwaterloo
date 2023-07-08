@@ -52,18 +52,18 @@ export interface FUNDR {
 	profession: string
 
 	country: string
-	location: string
+	location: string | null 
 	
-	images: string[]
+	images: string[] | null 
 
-	goal: number
+	goal: number | null 
 
 	contract: Contract[] | null
 	totalValue: number | string
 	
 
-	subscribers: Subscriber[]
-	comments: CommentMessage[]
+	subscribers: Subscriber[] | null
+	comments: CommentMessage[] | null
 	description: string
 
 	minimum: number

@@ -3,7 +3,8 @@
     import { selectedFundr, viewFundrModal } from "$lib/stores/state";
 
     function expandFundr() {
-      //TODO: make slug thing in routes id
+      //@ts-ignore
+      
     }
     
 </script>
