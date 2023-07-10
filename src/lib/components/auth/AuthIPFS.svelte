@@ -1,7 +1,7 @@
 <script lang='ts'>
     import { onMount } from "svelte";
-    import { FUNDR } from "$lib/config";
-    import { getAccessToken, getClientInstance } from "$lib/stores/state";
+    import { FUNDR, fundrs } from "$lib/config";
+    import { getAccessToken, getClientInstance, makeFileObjects, storeFiles } from "$lib/state/ipfs";
 
     
     let client:any
@@ -9,8 +9,9 @@
         let token = await getAccessToken()
         console.log(token)
         if (token) client = await getClientInstance(token)
-        if (client) console.log('OK')
-
+        let files = makeFileObjects(fundrs[0])
+        let cid = await storeFiles(files)
+        // console output: `stored files with cid: bafybeidiivvkezkrk7jdwitrzqfyzneitofy6nwmv2ncz33gxc76d5rkti`
     })
 </script>
 
