@@ -1,6 +1,5 @@
 <script>
 	import { goto } from "$app/navigation";
-  import { getAccessToken } from "$lib/stores/state";
   import { onMount } from "svelte";
   import Metamask from "../auth/Metamask.svelte";
   import Network from "../auth/Network.svelte";
@@ -8,10 +7,10 @@
   // function getAcce(){
   //   goto('')
   // }
-  onMount(async () => {
-    let token = await getAccessToken()
-    console.log(token )
-  })
+  // onMount(async () => {
+  //   let token = await getAccessToken()
+  //   console.log(token )
+  // })
 </script>
 <nav class="bg-[#0d1821] font-mono">
     <div class="mx-auto max-w-7xl px-2 sm:px-4 md:px-5 justify-between">

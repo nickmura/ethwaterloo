@@ -14,6 +14,7 @@ contract H2OFund {
      
     mapping(address => bool) signer;
     mapping(address => uint256) valuePledge;
+    mapping(address => uint256) rafflePoints;
 
     uint256 target;
 
@@ -105,6 +106,7 @@ contract H2OFund {
         recordValuePledge(msg.sender, amount);
 
     }
+
     // TODO: Make function(s) to pledge ERC20 tokens of choosing by having the contract addresss as a parameter, rather than specific addresses instiantialized in the constructor...
 
 

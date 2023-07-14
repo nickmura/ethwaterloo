@@ -1,4 +1,5 @@
-import API_KEY from '$lib/stores/state'
+import { API_KEY } from '$lib/stores/state'
+import { Web3Storage } from 'web3.storage'
 import type FUNDR from '../config'
 
 
@@ -27,8 +28,7 @@ export function makeFileObjects (obj:FUNDR) {
     const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
   
     const files = [
-      new File(['contents-of-file-1'], 'plain-utf8.txt'),
-      new File([blob], 'hello.json')
+      new File([blob], 'test.json')
     ]
     return files
 
@@ -36,14 +36,16 @@ export function makeFileObjects (obj:FUNDR) {
   }
 
 export async function storeFiles (files) {
-    const client = makeStorageClient()
+    const token = await getAccessToken()
+    const client = getClientInstance(token)
     const cid = await client.put(files)
     console.log('stored files with cid:', cid)
     return cid
   }
 
 export async function retrieveFiles (cid) {
-    const client = makeStorageClient()
+    const token = await getAccessToken()
+    const client = getClientInstance(token)
     const res = await client.get(cid)
     console.log(`Got a response! [${res.status}] ${res.statusText}`)
     if (!res.ok) {
@@ -52,7 +54,14 @@ export async function retrieveFiles (cid) {
   
     // unpack File objects from the response
     const files = await res.files()
-    for (const file of files) {
+    for (const file of files) { 
       console.log(`${file.cid} -- ${file.path} -- ${file.size}`)
     }
+}
+
+export async function getData(cid) {
+    const token = await getAccessToken()
+    const client = getClientInstance()
+    const res = await fetch(``)
+
 }

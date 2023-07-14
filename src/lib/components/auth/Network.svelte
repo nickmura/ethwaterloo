@@ -7,7 +7,6 @@
 	onMount(() => {
 		console.log($accountChainId)
 		console.log(selectedNetworkIndex)
-		// console.log(accountsChangedListener)
 		console.log(accountProvider)
 		console.log(networkProviders)
 		
