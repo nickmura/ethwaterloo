@@ -1,6 +1,7 @@
 import { API_KEY } from '$lib/stores/state'
-import { Web3Storage } from 'web3.storage'
-import type FUNDR from '../config'
+import { CIDString, Web3File, Web3Response, Web3Storage } from 'web3.storage'
+import type { FUNDR } from '$lib/config'
+import { CID } from 'web3.storage/dist/src/lib/interface';
 
 
 export function getAccessToken () {
@@ -34,34 +35,41 @@ export function makeFileObjects (obj:FUNDR) {
 
 
   }
-
+//@ts-ignore
 export async function storeFiles (files) {
     const token = await getAccessToken()
     const client = getClientInstance(token)
     const cid = await client.put(files)
+
     console.log('stored files with cid:', cid)
     return cid
   }
 
-export async function retrieveFiles (cid) {
+export async function retrieveFiles (cid:CIDString) {
     const token = await getAccessToken()
     const client = getClientInstance(token)
-    const res = await client.get(cid)
-    console.log(`Got a response! [${res.status}] ${res.statusText}`)
-    if (!res.ok) {
-      throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`)
-    }
+    const res:Web3Response|null = await client.get(cid)
+    let files:Web3File[]
+
+    if (res) {
+      if (!res.ok) throw new Error(`failed to get ${cid} - [${res.status}] ${res.statusText}`)
+      else {
+        files = await res.files()
+      }
+    } else throw new Error('failed to get response with cid: null')
   
     // unpack File objects from the response
-    const files = await res.files()
+       
+    
     for (const file of files) { 
-      console.log(`${file.cid} -- ${file.path} -- ${file.size}`)
+      console.log(`${file.cid} -- ${file.size}`)
     }
 }
 
-export async function getData(cid) {
+export async function getData(cid:CIDString) {
     const token = await getAccessToken()
-    const client = getClientInstance()
+    const client = getClientInstance(cid)
+    //todo
     const res = await fetch(``)
 
 }

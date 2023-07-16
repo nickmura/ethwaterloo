@@ -12,6 +12,8 @@
         let cid = await storeFiles(files)
         let retrieveData = await retrieveFiles(cid)
     })
+
+    
 </script>
 
 <main>
