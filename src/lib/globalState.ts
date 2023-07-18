@@ -4,7 +4,7 @@ import { Sync, Trigger } from 'ether-state';
 import { IMulticall } from '$lib/state/contracts';
 import { balanceOnBlock } from "$lib/stores/state";
 import { NETWORKS } from '$lib/config';
-import { networkProviders } from '$lib/stores/provider';
+// import { networkProviders } from '$lib/stores/provider';
 
 // Mainnet Syncs
 new Sync([

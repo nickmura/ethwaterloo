@@ -21,6 +21,8 @@ contract H2OFund {
     uint256 minimum;
     uint256 maximum;
 
+
+
     constructor(uint256 _target, uint256 min, uint256 max) {
         minimum = min;
         maximum = max;
@@ -89,6 +91,16 @@ contract H2OFund {
     function pledgeToken(uint256 amount) public {
         //Token = ERC20(_contract) TODO INTERFACE ERC20 Contract, add contract parameter.
         // address tokenContract = _contract;
+    
+
+        //TODO CHECK HOW TO VALUE OR EQUATE VALUE OF TOKEN FOR RAFFLE?
+        // WE NEED TO SUPPORT ALL TOKENS IF POSSIBLE, BUT HOW CAN WE MAKE SURE 
+        // VALUE IS EQUATED FOR?
+
+        // PRIOR TO DEPOSITING, WE CAN GET THE VALUE OF A TOKEN OFF-CHAIN ONCE VIA ORACLE
+        // AND ONLY GIVE THEM THAT MANY RAFFLE POINTS AT THE POINT OF DEPOSITING
+        // SOUNDS LIKE  AFUCKING PLAN
+        
         //Error handling
         if (minimum != 0 && amount < minimum) {
             revert invalidMinPledge({

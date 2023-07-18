@@ -1,16 +1,20 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { ethers } from 'ethers'
   import Currency from '$lib/components/reusable/Currency.svelte';
   import { fundrs,  type FUNDR } from '$lib/config'
-  import { currencySymbol, selectedCurrency } from '$lib/stores/state';
+  import { currencySymbol, selectedCurrency, selectedFundr } from '$lib/stores/state';
   import { Button, Modal } from 'flowbite-svelte'
   import ABI from '$lib/abis/Crowdfunding.json'
 
 
   
+  onMount(() => {
+    fundr = $selectedFundr
+    // console.log('line 14, Fundr.svelte', $selectedFundr)
+  })
 
-
-  let fundr:FUNDR = fundrs[0];
+  let fundr:FUNDR = $selectedFundr
 
 
   let supportValue =  0
@@ -46,6 +50,7 @@
 
   
   <main>
+    {#if fundr}
     <!-- <header class="relative isolate pt-1">
       
   
@@ -219,5 +224,6 @@
         </div>
       </div>
     </div>
+    {/if}
   </main>
   
