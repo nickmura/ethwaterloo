@@ -26,8 +26,11 @@ export interface Contract {
 export interface CommentMessage {
 	signer: string;
 	message: string;
+	subscribed: boolean;
+	amount: number | null
 }
 export interface Subscriber {
+    [x: string]: any;
 	signer: string;
 	chainid: number;
 	value: Value | null;
@@ -103,10 +106,10 @@ export const fundrs:FUNDR[] = [
 			{
 				signer: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
 				message: 'imma win',
+				subscribed: true,
+				amount: 10000000000000,
 			},
 		],
-
-
 		minimum: 0.1,
 		maximum: 0.1,
 	},
@@ -139,13 +142,21 @@ export const fundrs:FUNDR[] = [
 			{
 				signer: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
 				chainid: 0xaa36a7,
-				value: { contract: null, amount: 50000000000, txid: null },
+				value: { contract: null, amount: 100000000000000000000, txid: null },
 			},
 		],
 		comments: [
 			{
 				signer: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				message: 'imma win',
+				message: 'show the end result soon',
+				subscribed: true,
+				amount: 100000000000000000000
+			},
+			{
+				signer: '0x97b309F5F6C5eE3F1db263Bc65BfF8D33B34BD92',
+				message: 'Wow! This is such a transform. Im glad you can now enjoy your backyard.				',
+				subscribed: true,
+				amount: 100000000000000000000
 			},
 		],
 
@@ -154,75 +165,6 @@ export const fundrs:FUNDR[] = [
 		maximum: 0,
 	}
 ]
-export const projects = [
-	{
-		name: 'ETHParis Poker Tournament',
-		url: `ethparis2023-poker`,
-		country: '🇫🇷',
-		location: 'Paris',
-		profession: 'Cryptocurrency event',
-		images: [
-			'https://pbs.twimg.com/profile_images/1524436306205589510/CssJu0MT_400x400.jpg',
-		],
-		goal: 0,
-		category: 'Events',
-		minimum: 0.1,
-		signers: [],
-		totalValue: 2378,
-		subscribers: [
-			{
-				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				chainid: 0xaa36a7,
-				value: { contract: null, amount: 50000000000, txid: null },
-			},
-		],
-		comments: [
-			{
-				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				message: 'imma win',
-			},
-		],
-	},
-	{
-		name: 'Help Me Landscape My Backyard',
-		images: [
-			'https://preview.redd.it/zpq6kcl66wn61.jpg?width=3648&format=pjpg&auto=webp&v=enabled&s=fbb0143076ef39b275cabef3f6ec7662a28cd3c7',
-			'https://preview.redd.it/a7bkx4k56wn61.jpg?width=5312&format=pjpg&auto=webp&v=enabled&s=d6120ba088047d7be5ce23dfec341b900d3afa35',
-			'https://preview.redd.it/7s21gtr66wn61.jpg?width=4608&format=pjpg&auto=webp&v=enabled&s=b82f31b4fab41cdb2593bfaefa5ca43d09eef5a5',
-			'https://preview.redd.it/2g8kuru56wn61.jpg?width=5312&format=pjpg&auto=webp&v=enabled&s=18c4172e26d0e369e60a053106f21d7b8303b76b',
-		],
-		category: 'Non-profits',
-		tags: [],
-		signers: [],
-		profession: 'Landscaping',
-		goal: 1000,
-		minimum: 0,
-		totalValue: '18',
-		subscribers: [
-			{
-				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				chainid: 0xaa36a7,
-				value: { contract: null, amount: 0.1, txid: null },
-			},
-			{
-				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				chainid: 0xaa36a7,
-				value: { contract: null, amount: 0.1, txid: null },
-			},
-		],
-		donations: 5,
-		comments: [
-			{
-				address: '0xA73F698846A43c6a87f7Aba3506eE7783f3AfeC2',
-				message: 'imma win',
-			},
-		],
-		
-		country: '🇨🇦',
-		location: 'London',
-		timeLeft: '30d',
-	},
-];
 
 export const NETWORKS: Network[] = [
 	{

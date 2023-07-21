@@ -30,4 +30,5 @@ export const currencySymbol = writable<CurrencySymbol>('Ξ')
 export const selectedCurrency = writable<'MATIC' | 'USDC' | 'ETH'>('ETH')
 
 
+export const supportModalExpanded = writable<boolean>(false)
 

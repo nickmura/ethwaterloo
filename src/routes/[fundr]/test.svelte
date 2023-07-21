@@ -1,45 +1,32 @@
-<script lang="ts">
-  import { onMount } from 'svelte';
-  import { ethers } from 'ethers'
-  import { fundrs,  type FUNDR } from '$lib/config'
-  import { currencySymbol, selectedCurrency, selectedFundr, supportModalExpanded } from '$lib/stores/state';
-  import { Button, Modal } from 'flowbite-svelte'
-  import ABI from '$lib/abis/Crowdfunding.json'
-  import Support from './modal/Support.svelte';
-  import Currency from '$lib/components/reusable/Currency.svelte';
-  import { formatEther } from 'ethers/lib/utils';
+<script lang='ts'>
+    import { onMount } from 'svelte' 
+    import { ethers } from 'ethers'
+
+    import type { FUNDR }  from '$lib/config'
+    import { currencySymbol, selectedCurrency, selectedFundr } from '$lib/stores/state';
+    import { Button, Modal } from 'flowbite-svelte'
+   
+    import ABI from '$lib/abis/Crowdfunding.json'
+
+    import Fundr from "$lib/components/community/fundr/Fundr.svelte";
+    import Currency from '$lib/components/reusable/Currency.svelte';
 
 
+    let fundr:FUNDR
+    onMount(() => {
+        if ($selectedFundr) fundr = $selectedFundr
+        console.log('fundr', fundr)
+    })
 
-  
-  onMount(() => {
-    console.log("$selectedFundr", $selectedFundr)
-    selectedFundr.set(fundrs[1])
-    fundr = $selectedFundr
-
-    
-    
-    // console.log('line 14, Fundr.svelte', $selectedFundr)
-  })
-
-  let fundr:FUNDR
-  $: fundr = $selectedFundr
-  
-  
-  selectedFundr.subscribe(obj => {
-    fundr = obj
-    console.log('test')
-  })
-
-
-
-  let supportValue =  0
 
   let isExpanded = false
   function openDonate() {
-    supportModalExpanded.set(!$supportModalExpanded)
+    isExpanded = !isExpanded
   }
 
+
+  let supportValue = 0
+  $: supportValue
 
   async function submitTransaction() {
       console.log('submit')
@@ -61,12 +48,7 @@
   }
 </script>
 
-
-
-
-  
-  <main>
-    
+<main>
     {#if fundr}
     <!-- <header class="relative isolate pt-1">
       
@@ -122,7 +104,7 @@
           <!-- main media -->
 
           <p class="text-m font-bold">{fundr.title}</p>
-          <p>{fundr.description}<p/>
+          <p>My backyard is super old and on a slope, I want to landscape so my family can enjoy it. I need some finacial support.<p/>
           <img class="p-10" src="{fundr?.images?.[1]}" alt='images'>
             
 
@@ -154,10 +136,9 @@
                     <div class="w-px bg-gray-200"></div>
                   </div>
                   <div class="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
-                    <img src="https://raw.githubusercontent.com/afa7789/BlockiesVue/master/download.png" alt="" class="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50">
+                    <div class="h-1.5 w-1.5 rounded-full bg-gray-100 ring-1 ring-gray-300"></div>
                   </div>
-                  <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{subscriber.signer.substring(0,4)}..{subscriber.signer.substring(37,42)}</span> 
-                    Donated ${subscriber.value?.amount ? formatEther(subscriber.value?.amount) : ''}</p>
+                  <p class="flex-auto py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900">{subscriber.signer.substring(0,4)}..{subscriber.signer.substring(37,42)}</span> Donated $400</p>
                   <time datetime="2023-01-23T11:24" class="flex-none py-0.5 text-xs leading-5 text-gray-500">6d ago</time>
                 </li>
               {/each}
@@ -175,13 +156,44 @@
                       <div class="py-0.5 text-xs leading-5 text-gray-500"><span class="font-medium text-gray-900 truncate w-8">{comment.signer.substring(0,4)}..{comment.signer.substring(37,42)}</span> commented</div>
                       <time datetime="2023-01-23T15:56" class="flex-none py-0.5 text-xs leading-5 text-gray-500">3d ago</time>
                     </div>
-                    <p class="text-sm leading-6 text-gray-500">{comment.message}</p>
+                    <p class="text-sm leading-6 text-gray-500">Wow! This is such a transform. Im glad you can now enjoy your backyard.</p>
                   </div>
+                
                 </li>
               {/each}
             {/if}
             
-            <Support/>
+            <Modal bind:open={isExpanded} size="sm" outsideclose>
+              <div class="text-center">
+                <!-- <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> -->
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Support</h3>
+
+                  <div class='flex flex-row'>
+                  <span class='mt-2'>Currency</span>
+                    <div>
+                      <Currency/>
+                    </div>
+                  </div>
+
+                  <div class='flex flex-row mt-2 '>
+                    <span class='mt-2'>Amount</span>
+                    <div>
+                      <input bind:value={supportValue} type='number' class='px-2 py-2 border rounded-lg w-16' min=0 >
+                    </div>
+                  </div>
+                {#if supportValue}
+                <div class='mt-6'>
+                  <span class=''>Supporting: {fundr.title}</span>
+                  <span class=''>Amount: {$currencySymbol}{supportValue} {$selectedCurrency}</span>
+
+                </div>
+      
+
+                {/if}
+                <Button color="alternative" class="mr-2">Yes, I'm sure</Button>
+                <Button on:click={submitTransaction} color='green'>Contribute</Button>
+              </div>
+            </Modal>
   
           <!-- New comment form -->
           <div class="mt-6 flex gap-x-3">
@@ -211,6 +223,7 @@
         </div>
       </div>
     </div>
-    {/if}
-  </main>
+  {/if}
+</main>
   
+

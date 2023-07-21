@@ -91,8 +91,7 @@ contract H2OFund {
     function pledgeToken(uint256 amount) public {
         //Token = ERC20(_contract) TODO INTERFACE ERC20 Contract, add contract parameter.
         // address tokenContract = _contract;
-    
-
+        
         //TODO CHECK HOW TO VALUE OR EQUATE VALUE OF TOKEN FOR RAFFLE?
         // WE NEED TO SUPPORT ALL TOKENS IF POSSIBLE, BUT HOW CAN WE MAKE SURE 
         // VALUE IS EQUATED FOR?

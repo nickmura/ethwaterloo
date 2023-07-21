@@ -1,4 +1,4 @@
-export const prerender = false
+export const prerender = true
 import { FUNDR, fundrs } from '$lib/config.js';
 import { fetchedFundr } from '$lib/stores/state.js';
 import { error } from '@sveltejs/kit';
@@ -10,11 +10,12 @@ import { error } from '@sveltejs/kit';
 
 export async function load({ fetch, params }) {
   let url = params.fundr
-
+  
 
 
   let fundr = fundrs.find(fundr => fundr.url == url)
-    
+
+  console.log(fundr)
   if (fundr) {
     fetchedFundr.set(fundr)
     return fundr
