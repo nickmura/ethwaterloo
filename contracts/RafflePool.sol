@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
-import './Crowdfunding.sol';
 pragma solidity ^0.8.0;
+
+import './Crowdfunding.sol';
+
 
 
 error invalidTicketPurchase(uint256 amount, uint256 ticketPrice);

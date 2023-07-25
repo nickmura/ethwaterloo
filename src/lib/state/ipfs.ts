@@ -70,6 +70,7 @@ export async function getData(cid:CIDString) {
     const token = await getAccessToken()
     const client = getClientInstance(cid)
     //todo
-    const res = await fetch(``)
+
+    
 
 }
